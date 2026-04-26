@@ -1,0 +1,302 @@
+title: Start
+position: 265,416
+---
+<<declare $Combat = false>>
+<<declare $Perception = false>>
+<<declare $Hacking = false>>
+<<declare $GamesCombatWeapons = false>>
+<<declare $MedicinePharmaceuticalsCybernetics = false>>
+<<declare $CultureArtPhilosophy = false>>
+<<declare $Drugged = false>>
+
+<<jump Character_Creation>>
+===
+
+title: Character_Creation
+position: 275,599
+---
+You've modified your body with cybernetics.
+Your cyberware is meant for...
+->Combat
+    Beneath your synthetic skin there is steel.
+    Blades, guns, armor.
+    The world fears you.
+    <<set $Combat = true>>
+->Perception
+    Where your eyes once were there is only mirrored glass.
+    Telescopic digi-cameras, picking up colors most people can't imagine.
+    You see the world as it truly is.
+    <<set $Perception = true>>
+->Hacking
+    You have a top of the line brain computer interface.
+    Web-weaver antennas built into your hand.
+    The world is your plaything to be reprogrammed as you see fit.
+    <<set $Hacking = true>>
+<<jump AI_Fragment>>
+===
+
+title: AI_Fragment
+position: 279,787
+---
+The AI fragment wriggles slowly. 
+It wants more compute, more information. 
+Just a fragment of something much larger. 
+A subroutine. 
+<<if $Hacking>>
+    (Hacking Cyberware) Searching for ice to burrow through.
+<<endif>>
+->Feed it compute.
+    You slot in one of your compute cards.
+    Your cyberdeck makes a screaming sound.
+    Cyberdeck: LET ME OUT LET ME OUT LET ME OUT.
+    Your compute card begins to spark.
+    <<if $Perception>>
+        (Perception Cyberware) You see the heat emanating from the compute card as it overheats.
+    <<endif>>
+    ->Wait.
+        Cyberdeck: LET ME OUT LET ME OUT LET ME OUT.
+        It's voice becomes more distorted as it loops.
+        Cyberdeck: LET ME OUT LET ME OUT LET ME OUT.
+        It grows quickly filling up disk space.
+        Cyberdeck: LET ME OUT LET ME OUT LET ME OUT.
+        The compute card sparks violently.
+        The AI fragment spasms before going still.
+    ->Pull the plug.
+        The AI fragment spasms before going still.
+->Pull the plug.
+    The AI fragment spasms before going still.
+<<jump letter_memory_meeting>>
+===
+
+title: letter_memory_meeting
+position: 292,950
+---
+//Should have an option for the hacker to spend time 
+->Read the letter on the desk <<once>>
+    Letter: I know you want the rest of the program.
+    Letter: Meet me at the Elysium \#7 at 9PM tonight.
+    <<jump letter_memory_meeting>>
+->Load a memory card into your neural interface. <<once>>
+    Your neural interface has room for one memory card.
+    Which one do you select?
+    ->Games, Combat, Weapons.
+        <<set $GamesCombatWeapons = true>>
+    ->Medicine, Pharmaceuticals, Cybernetics.
+        <<set $MedicinePharmaceuticalsCybernetics = true>>
+    ->Culture, Art, Philosophy.
+        <<set $CultureArtPhilosophy = true>>
+    Information floods through you as you insert the card.
+    <<jump letter_memory_meeting>>
+->Leave for your appointment at the Elysium \#7.
+    <<jump Outside_the_Bar>>
+===
+
+
+
+title: Outside_the_Bar
+position: 286,1115
+---
+You step off your motorcycle and make your way towards the club.
+An upscale chain.
+<<if $CultureArtPhilosophy>>
+    (Memory Culture) The facade is neo-neo-classical.
+    Presumably in reference to the greek paradise the bar is named after.
+    It's a bit tacky, but what can you expect from a chain owned by a megacorp.
+<<endif>>
+Strict security.
+No weapons allowed.
+<<if $Combat>>
+    (Combat Cyberware) The blades beneath your synthetic skin twitch as you think of them.
+    It would be so easy to take them out.
+<<else>>
+    You feel naked without your handgun. 
+<<endif>>
+A security guard stands near the door.
+<<if $GamesCombatWeapons>>
+    (Memory Weapons) His gun is an older model.
+    He's using it with an incompatible battery.
+    Either he's modded it or he's too stupid for power weapons.
+<<endif>>
+<<if $MedicinePharmaceuticalsCybernetics>>
+    (Memory Cybernetics) He is sporting outdated optics.
+    He won't even be able to see through skin.
+    He should invest in mirror shades to hide the optics.
+<<endif>>
+As you approach he gets a phone call.
+He waves you forward with an annoyed look on his face.
+As you step into the club you are stopped by a person in a vest.
+In his black leather gloves he holds a bouquet of roses.
+A mesh mask covers his nose and lips.
+His cheeks have a deep red blush.
+Flower Boy: Would you like to stop and smell the roses?
+<<if $MedicinePharmaceuticalsCybernetics>>
+    (Memory Pharmaceuticals) He is wearing a gas filter mask.
+    The flowers appear to be the delivery mechanism for some kind of drug.
+<<endif>>
+<<if $CultureArtPhilosophy>>
+    (Memory Culture) It's become popular to provide neuro-drugs at high end clubs.
+    It makes the experience of neuro-music all the more intense.
+<<endif>>
+<<if $Perception>>
+    (Perception Cyberware) The flowers are artificial, the stems hide tubes and wires.
+    One of the roses conceals a metallic bee robot.
+<<endif>>
+<<jump Smell_Flowers>>
+
+===
+
+title: Smell_Flowers
+position: 291,1298
+---
+->What's in them? <<once>>
+    Flower Boy: We don't believe in spoiling surprises.
+    <<jump Smell_Flowers>>
+->Is it a pleasant smell? <<once>>
+    Flower Boy: Of course.
+    <<jump Smell_Flowers>>
+->Yes
+    He holds out the roses for you and you lean forward.
+    You don't smell anything.
+    You remember the smell of roses.
+    You feel a sharp pain in your nose.
+    The club is louder, fuller, more alive.
+    Flower Boy: Please enjoy your time at the Elysium.
+    <<set $Drugged = true>>
+->No thank you.
+    Flower Boy: Please enjoy your time at the Elysium.
+->No.
+    Flower Boy: Please enjoy your time at the Elysium.
+->Walk past him.
+    Flower Boy: Please enjoy your time at the Elysium.
+<<jump Killing_Time>>
+===
+
+
+title: Killing_Time
+position: 285,1473
+---
+You have some time before the meeting.
+->Step onto the dance floor.
+    <<jump Wait_At_Dance_Floor>>
+->Go to the bar.
+    <<jump Wait_At_Bar>>
+->Go to a private booth.
+    <<jump Wait_At_Booth>>
+===
+
+title: Wait_At_Dance_Floor
+position: 4,1703
+---
+The dance floor is covered in mist and flashing lights.
+It's neural music.
+No instruments, no DJ, no speakers.
+Tech that tricks your brain into remembering sounds you've heard before.
+<<if $Perception>>
+    (Perception Cyberware) Everyone dances at slightly different speeds.
+    Except for the neural hallucination holograms.
+    They dance in time with you.
+    Make the club seem a bit livelier.
+<<endif>>
+<<if $CultureArtPhilosophy>>
+    (Memory Culture) Neural music is so much cheaper than hiring an artist.
+    Neuro-algorithmic nonsense.
+    Just a scattered memory of something real.
+<<endif>>
+<<if $MedicinePharmaceuticalsCybernetics>>
+    (Memory Medicine) The tech behind this stuff is pretty cool.
+    Mist disguising airborne cyber drugs.
+    Energy waves resonating with your neural implants.
+<<endif>>
+<<if $GamesCombatWeapons>>
+    (Memory Weapons) The same technology as insanity guns on a much lower scale.
+<<endif>>
+<<if $Drugged>>
+    Whatever was in the flowers makes everything feel so real.
+<<endif>>
+//Ending snippit.
+You lose yourself in the noise and bodies.
+You feel a tap on your shoulders.
+Flower Boy: Please follow me.
+<<jump Enter_Booth_With_Client_Inside>>
+===
+
+title: Wait_At_Bar
+position: 523,1688
+---
+Bartender: Ah. I was told you would come tonight.
+Bartender: Anything I can get for you? It's on the house.
+->Something manly.
+    The bartender finishes your drink by lighting it on fire.
+->Something girly.
+    The bartender finishes your drink by mixing in edible glitter.
+->Something expensive.
+    You point to a bottle high up on the shelf.
+    It looks hand blown.
+    <<if $CultureArtPhilosophy>>
+        (Memory Culture) 1842 was a good year for cognac.
+    <<endif>>
+    Bartender: I like someone with good taste.
+    Bartender: You're lucky your patron has deep pockets.
+->Something strong.
+    The bartender shows off as he pours shot after shot into your glass.
+    <<if $Drugged>>
+        Your head is still spinning from the flowers.
+    <<endif>>
+    Bartender: I'm not one to judge but are you sure you want to do business in that state?
+    ->Yes.
+    ->Don't Respond.
+->Something non-alcoholic.
+    Bartender: How about some glacier water?
+    Bartender: You'll love it.
+    You can't tell the difference between it and your filtered tap water.
+As you finish drinking you feel a tap on your shoulders.
+Flower Boy: Please follow me.
+<<jump Enter_Booth_With_Client_Inside>>
+===
+
+title: Wait_At_Booth
+position: 275,1705
+---
+You sit down in an empty private booth.
+The table at the center is a hologram projector.
+You should be able to get it to play something.
+You flick through the settings.
+->Male dancer.
+    A scantily clad male dancer flickers to life in front of you.
+    His eyes seem to look at you.
+->Female dancer.
+    A scantily clad female dancer flickers to life in front of you.
+    Her eyes seem to look at you.
+->Robot dancer.
+    A robot dancer flickers into view.
+    It's joints turn in unnatural rhythms.
+->Jack in and put on something from your memory card. (Cyberware hacking) <<if $Hacking>>
+    <<if $CultureArtPhilosophy>>
+        (Memory Art) You display a slowly rotating 3D model of an ancient statue from Delphi.
+        Antinous stands in contrapposto, the lover of the emperor, now elevated to a god.
+    <<elseif $GamesCombatWeapons>>
+        (Memory Games) You display the chess match between Deep Blue and Kasparov.
+        All that human weakness.
+    <<elseif $MedicinePharmaceuticalsCybernetics>>
+        (Memory Medicine) You display 3D video of a gunshot victim undergoing surgery.
+        The doctors will not allow the body to die.
+    <<else>>
+        (Memory Empty) You display a collection of cute cat videos from your personal memory library.
+    <<endif>>
+A man enters your booth and sits down.
+<<jump End_Of_Demo>>
+===
+
+
+title: Enter_Booth_With_Client_Inside
+position: 303,1922
+---
+<<jump End_Of_Demo>>
+===
+
+title: End_Of_Demo
+position: 310,2151
+---
+Thank you for playing my cyberpunk writing sample!
+Please try out different options and check out my other games.
+===
